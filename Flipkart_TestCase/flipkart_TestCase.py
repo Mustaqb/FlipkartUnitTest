@@ -25,30 +25,30 @@ class Flipkart_Test(unittest.TestCase):
 
 
     def test_searchProduct(self):
-        home = HomePage(self.driver, self.wait)
-        home.closeLoginModal()
-        home.setSearchField()
-        home.clickSearchButton()
-        self.driver = home.returnDriver()
+        self.home = HomePage(self.driver, self.wait)
+        self.home.closeLoginModal()
+        self.home.setSearchField()
+        self.home.clickSearchButton()
+        self.driver = self.home.returnDriver()
 
     
     def test_searchedProducts(self):
-        searched = SearchedProducts(self.driver,self.wait)
-        productText = searched.getProductName()
-        self.assertIn(home.searchProduct, productText,
+        self.searched = SearchedProducts(self.driver, self.wait)
+        productText = self.searched.getProductName()
+        self.assertIn(HomePage.searchProduct, productText,
                       "Searched Product not in List")
-        searched.clickProduct()
+        self.searched.clickProduct()
         time.sleep(10)
-        self.driver = searched.returnDriver()
+        self.driver = self.searched.returnDriver()
 
     def test_checkBuyNow(self):
-        buyNow = ProductDetailsPage(self.driver, self.wait)
+        self.buyNow = ProductDetailsPage(self.driver, self.wait)
         time.sleep(10)
-        isBuyNowVisible = buyNow.checkBuyNow()
-        print('Status of BuyNow button ----->')
+        isBuyNowVisible = self.buyNow.checkBuyNow()
+        print('Status of BuyNow button ----->', isBuyNowVisible)
         self.assertTrue(not isBuyNowVisible,
                       "Product is not in stock Currently")
-        self.driver = buyNow.returnDriver()
+        self.driver = self.buyNow.returnDriver()
 
 
     @classmethod

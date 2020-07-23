@@ -35,7 +35,7 @@ class Flipkart_Test(unittest.TestCase):
     def test_searchedProducts(self):
         searched = SearchedProducts(self.driver,self.wait)
         productText = searched.getProductName()
-        self.assertIn(HomePage.searchProduct, productText,
+        self.assertIn(home.searchProduct, productText,
                       "Searched Product not in List")
         searched.clickProduct()
         time.sleep(10)

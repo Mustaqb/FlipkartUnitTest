@@ -1,5 +1,4 @@
-all the required packages are already included in the created environment
+all the required packages are included in the requirements.txt
 
-to activate the environment execute the following command after navigating to the saved directory
-
-.\Flipkart_Selenium_Env\Scripts\activate.bat
+to install the packages use the following command
+pip install -r requirements.txt
